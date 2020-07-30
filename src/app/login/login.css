@@ -1,0 +1,40 @@
+.Login {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Login__content {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.Login__content__form {
+  background: var(--white-50);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  padding: 64px 128px;
+  position: relative;
+}
+
+.Login__content__form::before {
+  border: 4px solid var(--white-50);
+  border-radius: 3px;
+  bottom: -9px;
+  content: "";
+  left: -9px;
+  position: absolute;
+  right: -9px;
+  top: -9px;
+}
+
+.Login__content__form__header {
+  font-family: "Rye", serif;
+  font-size: 32px;
+  margin-bottom: 64px;
+}

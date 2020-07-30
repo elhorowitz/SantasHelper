@@ -1,0 +1,23 @@
+@import "./reset.css";
+
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* Source: https://coolors.co/2b2727-395453-bc8f8f-f3bfc1-cff3f3 */
+:root {
+  --black-100: #2b2727;
+  --green-100: #395453;
+  --green-50: #cff3f3;
+  --red-100: #bc8f8f;
+  --red-50: #f3bfc1;
+  --white-100: #ffffff;
+  --white-50: rgba(255, 255, 255, 0.72);
+}
+
+html,
+body {
+  color: var(--black-100);
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
