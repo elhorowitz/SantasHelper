@@ -2,7 +2,6 @@ import React from "react";
 
 import BasePage from "../components/basePage/basePage";
 import Table from "../components/table/table";
-import WishListHeader from "../components/wishList/wishListHeader/wishListHeader";
 import WishListRow from "../components/wishList/wishListRow/wishListRow";
 
 import "./familyWishList.css";
@@ -32,7 +31,11 @@ function FamilyWishList() {
 
   return (
     <BasePage description="Let me help you with these items for my family:">
-      <Table isordered={true} header={<WishListHeader />} rows={rows}></Table>
+      <Table
+        isordered={true}
+        header={<p>Family Wishlist</p>}
+        rows={rows}
+      ></Table>
     </BasePage>
   );
 }
