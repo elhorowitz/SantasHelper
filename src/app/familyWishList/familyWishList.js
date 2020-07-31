@@ -1,10 +1,9 @@
 import React from "react";
 
-import BasePage from "../basePage/basePage";
-
+import BasePage from "../components/basePage/basePage";
+import Table from "../components/table/table";
 import WishListHeader from "../components/wishList/wishListHeader/wishListHeader";
 import WishListRow from "../components/wishList/wishListRow/wishListRow";
-import Table from "../components/table/table";
 
 import "./familyWishList.css";
 
