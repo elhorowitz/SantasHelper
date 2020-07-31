@@ -7,12 +7,11 @@ import Navigation from "../components/navigation/navigation";
 
 import "./familyWishList.css";
 
-function FamilyWishList(props) {
+function FamilyWishList({ isFamily }) {
   const rows = ["Item 1", "Item 2", "Item 3"].map((item) => (
     <WishListRow item={item} />
   ));
 
-  console.log(props.isFamily);
   return (
     <section className="FamilyWishList">
       <header className="FamilyWishList__header">
@@ -21,7 +20,7 @@ function FamilyWishList(props) {
           <span className="FamilyWishList__header--title--alt">Santa</span>,
         </h1>
         <h2 className="FamilyWishList__header--subtitle">
-          {props.isFamily
+          {isFamily
             ? "Let me help you with these items for my family:"
             : "For Christmas, may I please have:"}
         </h2>
@@ -30,7 +29,7 @@ function FamilyWishList(props) {
       <div className="FamilyWishList__body">
         <Table
           isordered={true}
-          header={<WishListHeader isFamily={props.isFamily} />}
+          header={<WishListHeader isFamily={isFamily} />}
           rows={rows}
         ></Table>
       </div>

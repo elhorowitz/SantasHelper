@@ -14,7 +14,7 @@
   font-family: "Rye", cursive;
   font-size: 32px;
   color: var(--green-100);
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .FamilyWishList__header--title--alt {
@@ -24,6 +24,7 @@
 .FamilyWishList__header--subtitle {
   font-size: 24px;
   font-weight: 300;
+  line-height: 32px;
 }
 
 .FamilyWishList__body {

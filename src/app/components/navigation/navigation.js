@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as GiftBagEmpty } from "../../../assets/icons/sleigh-full.svg";
-import { ReactComponent as GiftBagFull } from "../../../assets/icons/sleigh-empty.svg";
+import { ReactComponent as SantaIcon } from "../../../assets/icons/santa.svg";
+import { ReactComponent as ElfIcon } from "../../../assets/icons/elf.svg";
 
 import "./navigation.css";
 
@@ -14,7 +14,7 @@ function Navigation() {
           className="Navigation__item__link"
           to="/family"
         >
-          <GiftBagEmpty />
+          <ElfIcon />
         </NavLink>
       </li>
       <li className="Navigation__item">
@@ -23,7 +23,7 @@ function Navigation() {
           className="Navigation__item__link"
           to="/personal"
         >
-          <GiftBagFull />
+          <SantaIcon />
         </NavLink>
       </li>
     </ol>

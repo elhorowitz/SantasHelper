@@ -26,11 +26,11 @@ function App() {
         </Route>
 
         <PrivateRoute authentication={fakeAuth} path="/family">
-          <FamilyWishLIst isFamily="true" />
+          <FamilyWishLIst isFamily={true} />
         </PrivateRoute>
 
         <PrivateRoute authentication={fakeAuth} path="/personal">
-          <FamilyWishLIst isFamily="false" />
+          <FamilyWishLIst isFamily={false} />
         </PrivateRoute>
       </Switch>
     </Router>
