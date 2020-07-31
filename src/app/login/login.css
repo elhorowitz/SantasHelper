@@ -31,10 +31,26 @@
   position: absolute;
   right: -9px;
   top: -9px;
+  z-index: -1;
 }
 
 .Login__content__form__header {
   font-family: "Rye", serif;
   font-size: 32px;
   margin-bottom: 64px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .Login__content__form {
+    height: calc(100vh - 18px); /* double the margin */
+    justify-content: center;
+    margin: 9px;
+    padding: 0 64px;
+    width: 100%;
+  }
+
+  .Login__content__form__header {
+    font-size: 24px;
+  }
 }
