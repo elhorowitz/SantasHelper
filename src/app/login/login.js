@@ -14,7 +14,7 @@ function Login(props) {
   const history = useHistory();
   const location = useLocation();
 
-  const { from } = location.state || { from: { pathname: "/" } };
+  const { from } = location.state || { from: { pathname: "/family" } };
   const login = () => {
     props.authentication.authenticate(() => {
       history.replace(from);

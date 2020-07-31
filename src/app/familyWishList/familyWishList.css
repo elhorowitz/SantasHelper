@@ -1,0 +1,36 @@
+.FamilyWishList {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.FamilyWishList__header {
+  padding: 24px;
+}
+
+.FamilyWishList__header--title {
+  font-family: "Rye", cursive;
+  font-size: 32px;
+  color: var(--green-100);
+  margin-bottom: 12px;
+}
+
+.FamilyWishList__header--title--alt {
+  color: var(--red-100);
+}
+
+.FamilyWishList__header--subtitle {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.FamilyWishList__body {
+  flex: 1;
+  padding: 0 24px;
+}
+
+.FamilyWishList__footer {
+  border-top: 3px solid var(--black-100);
+}

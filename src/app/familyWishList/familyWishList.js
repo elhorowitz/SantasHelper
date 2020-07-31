@@ -1,34 +1,44 @@
 import React from "react";
 
+import WishListHeader from "./components/wishListHeader/wishListHeader";
+import WishListRow from "./components/wishListRow/wishListRow";
 import Table from "../components/table/table";
+import Navigation from "../components/navigation/navigation";
 
 import "./familyWishList.css";
 
 function FamilyWishList(props) {
-  const rows = ["Item 1", "Item 2", "Item 3"];
+  const rows = ["Item 1", "Item 2", "Item 3"].map((item) => (
+    <WishListRow item={item} />
+  ));
 
+  console.log(props.isFamily);
   return (
-    <div className="FamilyWishList">
-      <section className="FamilyWishList__list">
-        <header>My WishList</header>
-        <Table
-          isordered={true}
-          header="Items"
-          footer="Footer"
-          rows={rows}
-        ></Table>
-      </section>
+    <section className="FamilyWishList">
+      <header className="FamilyWishList__header">
+        <h1 className="FamilyWishList__header--title">
+          Dearest{" "}
+          <span className="FamilyWishList__header--title--alt">Santa</span>,
+        </h1>
+        <h2 className="FamilyWishList__header--subtitle">
+          {props.isFamily
+            ? "Let me help you with these items for my family:"
+            : "For Christmas, may I please have:"}
+        </h2>
+      </header>
 
-      <section className="FamilyWishList__list">
-        <header>Family WishList</header>
+      <div className="FamilyWishList__body">
         <Table
           isordered={true}
-          header="Items"
-          footer="Footer"
+          header={<WishListHeader isFamily={props.isFamily} />}
           rows={rows}
         ></Table>
-      </section>
-    </div>
+      </div>
+
+      <footer className="FamilyWishList__footer">
+        <Navigation />
+      </footer>
+    </section>
   );
 }
 
