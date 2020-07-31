@@ -1,0 +1,9 @@
+.WishListRow {
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.WishListRow__cell {
+  padding: 10px 0;
+}
