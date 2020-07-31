@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/privateRoute/privateRoute";
 import Login from "./login/login";
 import FamilyWishLIst from "./familyWishList/familyWishList";
+import PersonalWishLIst from "./personalWishList/personalWishList";
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -26,11 +27,11 @@ function App() {
         </Route>
 
         <PrivateRoute authentication={fakeAuth} path="/family">
-          <FamilyWishLIst isFamily={true} />
+          <FamilyWishLIst />
         </PrivateRoute>
 
         <PrivateRoute authentication={fakeAuth} path="/personal">
-          <FamilyWishLIst isFamily={false} />
+          <PersonalWishLIst />
         </PrivateRoute>
       </Switch>
     </Router>

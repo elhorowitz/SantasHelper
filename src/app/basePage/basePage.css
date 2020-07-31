@@ -1,0 +1,37 @@
+.BasePage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.BasePage__header {
+  padding: 24px;
+}
+
+.BasePage__header--title {
+  font-family: "Rye", cursive;
+  font-size: 32px;
+  color: var(--green-100);
+  margin-bottom: 24px;
+}
+
+.BasePage__header--title--alt {
+  color: var(--red-100);
+}
+
+.BasePage__header--subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+}
+
+.BasePage__body {
+  flex: 1;
+  padding: 0 24px;
+}
+
+.BasePage__footer {
+  border-top: 3px solid var(--black-100);
+}
