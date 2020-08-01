@@ -14,7 +14,7 @@ function Navigation() {
           className="Navigation__item__link"
           to="/family"
         >
-          <ElfIcon />
+          <ElfIcon title="Family wish list" />
         </NavLink>
       </li>
       <li className="Navigation__item">
@@ -23,7 +23,7 @@ function Navigation() {
           className="Navigation__item__link"
           to="/personal"
         >
-          <SantaIcon />
+          <SantaIcon title="Personal wish list" />
         </NavLink>
       </li>
     </ol>
