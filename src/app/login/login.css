@@ -35,6 +35,7 @@
 }
 
 .Login__content__form__header {
+  color: var(--green-100);
   font-family: "Rye", serif;
   font-size: 32px;
   margin-bottom: 64px;

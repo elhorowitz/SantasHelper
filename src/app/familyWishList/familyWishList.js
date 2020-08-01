@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ReactComponent as EmptyGiftBagIcon } from "../../assets/icons/gift-bag-empty.svg";
-import { ReactComponent as FullGiftBagIcon } from "../../assets/icons/gift-bag-full.svg";
+import { ReactComponent as EmptySleighIcon } from "../../assets/icons/sleigh-empty.svg";
+import { ReactComponent as FullSleighIcon } from "../../assets/icons/sleigh-full.svg";
 
 import BasePage from "../components/basePage/basePage";
 import Table from "../components/table/table";
@@ -42,7 +42,7 @@ function FamilyWishList() {
     <div className="FamilyWishListHeader">
       <p className="FamilyWishListHeader__label">{memberName}'s Wishlist</p>
       <p className="FamilyWishListHeader__metadata">
-        0 <EmptyGiftBagIcon className="FamilyWishListHeader__metadata__icon" />
+        0 <EmptySleighIcon className="FamilyWishListHeader__metadata__icon" />
       </p>
     </div>
   );

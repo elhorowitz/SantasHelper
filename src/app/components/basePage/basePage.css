@@ -7,7 +7,7 @@
 }
 
 .BasePage__header {
-  padding: 24px;
+  padding: 48px 24px 24px;
 }
 
 .BasePage__header--title {
@@ -29,9 +29,19 @@
 
 .BasePage__body {
   flex: 1;
-  padding: 0 24px;
+  overflow: auto;
+  padding: 0 24px 24px;
 }
 
 .BasePage__footer {
   border-top: 3px solid var(--black-100);
+  position: relative;
+}
+
+.BasePage__footer::before {
+  content: "";
+  border-top: 2px solid var(--red-100);
+  position: absolute;
+  top: 2px;
+  width: 100%;
 }
