@@ -7,6 +7,8 @@
 /* Source: https://coolors.co/2b2727-395453-bc8f8f-f3bfc1-cff3f3 */
 :root {
   --black-100: #2b2727;
+  --black-50: #6b6161;
+  --black-25: #9e9494;
   --green-100: #395453;
   --green-50: #cff3f3;
   --red-100: #bc8f8f;
@@ -17,6 +19,7 @@
 
 html,
 body {
+  box-sizing: border-box;
   color: var(--black-100);
   font-size: 16px;
   font-family: "Lato", sans-serif;

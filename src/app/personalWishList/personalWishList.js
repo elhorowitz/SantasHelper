@@ -9,7 +9,7 @@ import "./personalWishList.css";
 function PersonalWishList() {
   const wishList = [
     {
-      item: "Shirts",
+      name: "Shirts",
       notes: "I like turtles",
       links: ["https://www.google.com"],
     },

@@ -1,5 +1,36 @@
 .WishListRow {
-  column-gap: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--black-25);
+}
+
+.WishListRow__toggle {
+  background: none;
+  border: none;
+  border-radius: 0;
+  display: block;
+  font-family: "Lato";
+  font-size: 16px;
+  padding: 10px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.WishListRow__toggle:hover,
+.WishListRow__toggle:focus,
+.WishListRow__toggle--expanded {
+  color: var(--red-100);
+  font-weight: 700;
+  outline: none;
+}
+
+.WishListRow__toggle__label {
+}
+
+.WishListRow__expand {
+  padding-top: 14px;
+  color: var(--black-50);
+}
+
+.WishListRow__expand__notes,
+.WishListRow__expand__links {
+  margin-bottom: 24px;
 }

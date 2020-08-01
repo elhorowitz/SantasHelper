@@ -1,0 +1,20 @@
+.FamilyWishList__member {
+  margin-bottom: 24px;
+}
+
+.FamilyWishListHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.FamilyWishListHeader__metadata {
+  display: flex;
+  align-items: baseline;
+}
+
+.FamilyWishListHeader__metadata__icon {
+  margin-left: 4px;
+  height: 24px;
+  width: 24px;
+}
