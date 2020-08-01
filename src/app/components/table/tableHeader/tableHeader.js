@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "./tableHeader.css";
+import './tableHeader.css';
 
 function TableHeader(props) {
   return <li className="TableHeader">{props.children}</li>;

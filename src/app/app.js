@@ -1,10 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import PrivateRoute from "./components/privateRoute/privateRoute";
-import Login from "./login/login";
-import FamilyWishLIst from "./familyWishList/familyWishList";
-import PersonalWishLIst from "./personalWishList/personalWishList";
+import PrivateRoute from './components/privateRoute/privateRoute';
+import Login from './login/login';
+import FamilyWishLIst from './familyWishList/familyWishList';
+import PersonalWishLIst from './personalWishList/personalWishList';
 
 const fakeAuth = {
   isAuthenticated: false,

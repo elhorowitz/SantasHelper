@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Route, Redirect } from 'react-router-dom';
 
 function PrivateRoute({ authentication, children, ...restProps }) {
   return (
@@ -14,8 +11,8 @@ function PrivateRoute({ authentication, children, ...restProps }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
-              state: { from: location }
+              pathname: '/login',
+              state: { from: location },
             }}
           />
         )

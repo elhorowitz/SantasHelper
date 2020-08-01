@@ -1,9 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { ReactComponent as SantaIcon } from "../../../assets/icons/santa.svg";
-import { ReactComponent as ElfIcon } from "../../../assets/icons/elf.svg";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { ReactComponent as SantaIcon } from '../../../assets/icons/santa.svg';
+import { ReactComponent as ElfIcon } from '../../../assets/icons/elf.svg';
 
-import "./navigation.css";
+import './navigation.css';
 
 function Navigation() {
   return (

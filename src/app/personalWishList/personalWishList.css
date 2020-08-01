@@ -11,7 +11,7 @@
 }
 
 .PersonalWishList__header--title {
-  font-family: "Rye", cursive;
+  font-family: 'Rye', cursive;
   font-size: 32px;
   color: var(--green-100);
   margin-bottom: 24px;

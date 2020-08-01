@@ -2,7 +2,7 @@ import React from 'react';
 
 import './inputField.css';
 
-function InputField({id, label, ...restProps}) {
+function InputField({ id, label, ...restProps }) {
   const labelId = `${id}Label`;
 
   return (
@@ -10,7 +10,12 @@ function InputField({id, label, ...restProps}) {
       <label className="InputField__label" htmlFor={id} id={labelId}>
         {label}
       </label>
-      <input className="InputField__input" id={id} aria-labelledby={labelId} {...restProps} />
+      <input
+        className="InputField__input"
+        id={id}
+        aria-labelledby={labelId}
+        {...restProps}
+      />
     </div>
   );
 }

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import BasePage from "../components/basePage/basePage";
-import Table from "../components/table/table";
-import WishListRow from "../components/wishList/wishListRow/wishListRow";
+import BasePage from '../components/basePage/basePage';
+import Table from '../components/table/table';
+import WishListRow from '../components/wishList/wishListRow/wishListRow';
 
-import "./personalWishList.css";
+import './personalWishList.css';
 
 function PersonalWishList() {
   const wishList = [
     {
-      name: "Shirts",
-      notes: "I like turtles",
-      links: ["https://www.google.com"],
+      name: 'Shirts',
+      notes: 'I like turtles',
+      links: ['https://www.google.com'],
     },
   ];
 

@@ -1,38 +1,38 @@
-import React from "react";
+import React from 'react';
 
-import { ReactComponent as EmptySleighIcon } from "../../assets/icons/sleigh-empty.svg";
-import { ReactComponent as FullSleighIcon } from "../../assets/icons/sleigh-full.svg";
+import { ReactComponent as EmptySleighIcon } from '../../assets/icons/sleigh-empty.svg';
+import { ReactComponent as FullSleighIcon } from '../../assets/icons/sleigh-full.svg';
 
-import BasePage from "../components/basePage/basePage";
-import Table from "../components/table/table";
-import WishListRow from "../components/wishList/wishListRow/wishListRow";
+import BasePage from '../components/basePage/basePage';
+import Table from '../components/table/table';
+import WishListRow from '../components/wishList/wishListRow/wishListRow';
 
-import "./familyWishList.css";
+import './familyWishList.css';
 
 function FamilyWishList() {
   const wishList = [
     {
-      name: "Mom",
+      name: 'Mom',
       wishList: [
         {
-          name: "Sweater",
-          notes: "I like green or purple",
-          links: ["https://www.google.com"],
+          name: 'Sweater',
+          notes: 'I like green or purple',
+          links: ['https://www.google.com'],
         },
         {
-          name: "Slippers",
-          notes: "I like my 40 year old ones",
-          links: ["https://www.google.com", "https://www.google.com"],
+          name: 'Slippers',
+          notes: 'I like my 40 year old ones',
+          links: ['https://www.google.com', 'https://www.google.com'],
         },
       ],
     },
     {
-      name: "Dad",
+      name: 'Dad',
       wishList: [
         {
-          name: "Slippers",
-          notes: "I like my 40 year old ones",
-          links: ["https://www.google.com"],
+          name: 'Slippers',
+          notes: 'I like my 40 year old ones',
+          links: ['https://www.google.com'],
         },
       ],
     },

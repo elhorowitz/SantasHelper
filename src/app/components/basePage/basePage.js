@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Navigation from "../navigation/navigation";
+import Navigation from '../navigation/navigation';
 
-import "./basePage.css";
+import './basePage.css';
 
 function BasePage({ description, children }) {
   return (

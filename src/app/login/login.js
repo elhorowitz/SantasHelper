@@ -1,20 +1,20 @@
-import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
-import Button from "../components/button/button";
-import BackgroundVideo from "../components/backgroundVideo/backgroundVideo";
+import Button from '../components/button/button';
+import BackgroundVideo from '../components/backgroundVideo/backgroundVideo';
 
-import backgroundMp4 from "../../assets/snowy_background.mp4";
-import backgroundWebm from "../../assets/snowy_background.webm";
-import backgroundPoster from "../../assets/snowy_background_poster.png";
+import backgroundMp4 from '../../assets/snowy_background.mp4';
+import backgroundWebm from '../../assets/snowy_background.webm';
+import backgroundPoster from '../../assets/snowy_background_poster.png';
 
-import "./login.css";
+import './login.css';
 
 function Login(props) {
   const history = useHistory();
   const location = useLocation();
 
-  const { from } = location.state || { from: { pathname: "/family" } };
+  const { from } = location.state || { from: { pathname: '/family' } };
   const login = () => {
     props.authentication.authenticate(() => {
       history.replace(from);

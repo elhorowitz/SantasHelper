@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import TableFooter from "./tableFooter/tableFooter";
-import TableHeader from "./tableHeader/tableHeader";
-import TableRow from "./tableRow/tableRow";
+import TableFooter from './tableFooter/tableFooter';
+import TableHeader from './tableHeader/tableHeader';
+import TableRow from './tableRow/tableRow';
 
-import "./table.css";
+import './table.css';
 
 function Table({ isordered, header, rows, footer, ...restProps }) {
   if (isordered) {

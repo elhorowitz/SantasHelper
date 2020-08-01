@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "./wishListRow.css";
+import './wishListRow.css';
 
 class WishListRow extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class WishListRow extends React.Component {
   }
 
   toggleExpand() {
-    console.log("clicked! ", this.state.isExpanded);
+    console.log('clicked! ', this.state.isExpanded);
     this.setState((state) => ({ isExpanded: !state.isExpanded }));
   }
 
@@ -25,8 +25,8 @@ class WishListRow extends React.Component {
       <div className="WishListRow">
         <button
           className={
-            "WishListRow__toggle" +
-            (isExpanded ? " WishListRow__toggle--expanded" : "")
+            'WishListRow__toggle' +
+            (isExpanded ? ' WishListRow__toggle--expanded' : '')
           }
           onClick={this.toggleExpand}
         >
@@ -37,7 +37,7 @@ class WishListRow extends React.Component {
           <div className="WishListRow__expand">
             <div className="WishListRow__expand__notes">
               <p>Notes:</p>
-              <p>{item.notes || "--"}</p>
+              <p>{item.notes || '--'}</p>
             </div>
             <div className="WishListRow__expand__links">
               <p>Links:</p>
@@ -50,7 +50,7 @@ class WishListRow extends React.Component {
                   ))}
                 </ul>
               ) : (
-                "--"
+                '--'
               )}
             </div>
           </div>

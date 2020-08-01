@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "./backgroundVideo.css";
+import './backgroundVideo.css';
 
 function BackgroundVideo({ mp4, webm, poster }) {
   return (

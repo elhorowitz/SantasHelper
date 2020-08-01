@@ -11,7 +11,7 @@
 }
 
 .BasePage__header--title {
-  font-family: "Rye", cursive;
+  font-family: 'Rye', cursive;
   font-size: 32px;
   color: var(--green-100);
   margin-bottom: 24px;
@@ -39,7 +39,7 @@
 }
 
 .BasePage__footer::before {
-  content: "";
+  content: '';
   border-top: 2px solid var(--red-100);
   position: absolute;
   top: 2px;

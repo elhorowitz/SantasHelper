@@ -26,7 +26,7 @@
   border: 4px solid var(--white-50);
   border-radius: 3px;
   bottom: -9px;
-  content: "";
+  content: '';
   left: -9px;
   position: absolute;
   right: -9px;
@@ -36,7 +36,7 @@
 
 .Login__content__form__header {
   color: var(--green-100);
-  font-family: "Rye", serif;
+  font-family: 'Rye', serif;
   font-size: 32px;
   margin-bottom: 64px;
   text-align: center;
