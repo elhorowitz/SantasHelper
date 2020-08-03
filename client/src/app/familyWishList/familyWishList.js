@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import { ReactComponent as EmptySleighIcon } from '../../assets/icons/sleigh-empty.svg';
 import { ReactComponent as FullSleighIcon } from '../../assets/icons/sleigh-full.svg';
@@ -10,33 +11,15 @@ import WishListRow from '../components/wishList/wishListRow/wishListRow';
 import './familyWishList.css';
 
 function FamilyWishList() {
-  const wishList = [
-    {
-      name: 'Mom',
-      wishList: [
-        {
-          name: 'Sweater',
-          notes: 'I like green or purple',
-          links: ['https://www.google.com'],
-        },
-        {
-          name: 'Slippers',
-          notes: 'I like my 40 year old ones',
-          links: ['https://www.google.com', 'https://www.google.com'],
-        },
-      ],
-    },
-    {
-      name: 'Dad',
-      wishList: [
-        {
-          name: 'Slippers',
-          notes: 'I like my 40 year old ones',
-          links: ['https://www.google.com'],
-        },
-      ],
-    },
-  ];
+  // Prepare states
+  const [wishList, setWishList] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/family').then((res) => {
+      console.log(res);
+      return setWishList(res.data.data);
+    });
+  }, []);
 
   const getTableHeader = (memberName) => (
     <div className="FamilyWishListHeader">
