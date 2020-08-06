@@ -9,11 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       type: {
-        type: Sequelize.ENUM('user', 'admin'),
+        allowNull: false,
         defaultValue: 'user',
+        type: Sequelize.ENUM('user', 'admin'),
       },
       email: {
         type: Sequelize.STRING,

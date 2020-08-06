@@ -12,22 +12,22 @@ module.exports = {
         type: Sequelize.DATE,
       },
       familyId: {
-        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Families',
           key: 'id',
           as: 'familyId',
         },
+        type: Sequelize.INTEGER,
       },
       memberId: {
-        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Members',
           key: 'id',
           as: 'memberId',
         },
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

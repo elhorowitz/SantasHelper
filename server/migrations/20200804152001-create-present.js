@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       notes: {
@@ -18,6 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       memberId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Members',
