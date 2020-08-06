@@ -41,17 +41,7 @@ class WishListRow extends React.Component {
             </div>
             <div className="WishListRow__expand__links">
               <p>Links:</p>
-              {item.links.length ? (
-                <ul>
-                  {item.links.map((link, index) => (
-                    <li key={index}>
-                      <a href={link}>{link}</a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                '--'
-              )}
+              {(item.link && <a href={item.link}>{item.link}</a>) || '--'}
             </div>
           </div>
         )}

@@ -1,50 +1,53 @@
+const { Op } = require('sequelize');
+const { Family, Member, FamilyMember, Present } = require('../models');
+
 module.exports = {
   read(req, res) {
-    res.json({
-      error: false,
-      data: [
-        {
-          name: 'Mom',
-          wishList: [
-            {
-              name: 'Sweater',
-              notes: 'I like green or purple',
-              links: ['https://www.google.com'],
-            },
-            {
-              name: 'Slippers',
-              notes: 'I like my 40 year old ones',
-              links: ['https://www.google.com', 'https://www.google.com'],
-            },
-          ],
+    Member.findAll({
+      where: {
+        id: 1,
+      },
+      include: {
+        model: Family,
+        include: {
+          model: Member,
+          include: Present,
         },
-        {
-          name: 'Dad',
-          wishList: [
-            {
-              name: 'Slippers',
-              notes: 'I like my 40 year old ones',
-              links: ['https://www.google.com'],
-            },
-          ],
-        },
-      ],
-    });
+      },
+    })
+      .then((data) => {
+        let response = {
+          wishlist: [],
+          family: [],
+        };
 
-    // Family.findAll({})
-    //   .then((family) =>
-    //     res.json({
-    //       error: false,
-    //       data: family,
-    //     })
-    //   )
-    //   .catch((error) =>
-    //     res.json({
-    //       error: true,
-    //       data: [],
-    //       error: error,
-    //     })
-    //   );
+        const family = data[0].Families[0];
+
+        family.Members.map((member) => {
+          if (member.id === 1) {
+            response.wishlist = member.Presents;
+            return;
+          } else {
+            response.family.push(member);
+            return;
+          }
+        });
+
+        return response;
+      })
+      .then((response) => {
+        return res.status(201).json({
+          error: false,
+          data: response,
+        });
+      })
+      .catch((error) =>
+        res.json({
+          error: true,
+          data: [],
+          error: error,
+        })
+      );
   },
 
   create(req, res) {

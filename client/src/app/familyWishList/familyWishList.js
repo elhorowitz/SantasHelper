@@ -16,8 +16,7 @@ function FamilyWishList() {
 
   useEffect(() => {
     axios.get('/api/family').then((res) => {
-      console.log(res);
-      return setWishList(res.data.data);
+      return setWishList(res.data.data.family);
     });
   }, []);
 
@@ -34,13 +33,13 @@ function FamilyWishList() {
     wishList.map((item, index) => <WishListRow item={item} key={index} />);
 
   const getFamilyMembers = () =>
-    wishList.map((member, index) => (
-      <li key={index}>
+    wishList.map((member) => (
+      <li key={member.id}>
         <Table
           className="FamilyWishList__member"
           header={getTableHeader(member.name)}
           isordered={false}
-          rows={getRows(member.wishList)}
+          rows={getRows(member.Presents)}
         ></Table>
       </li>
     ));
