@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 import { ReactComponent as EmptySleighIcon } from '../../assets/icons/sleigh-empty.svg';
 import { ReactComponent as FullSleighIcon } from '../../assets/icons/sleigh-full.svg';
@@ -7,6 +6,7 @@ import { ReactComponent as FullSleighIcon } from '../../assets/icons/sleigh-full
 import BasePage from '../components/basePage/basePage';
 import Table from '../components/table/table';
 import WishListRow from '../components/wishList/wishListRow/wishListRow';
+import { getFamilyWishlist } from '../services/backend';
 
 import './familyWishList.css';
 
@@ -15,8 +15,10 @@ function FamilyWishList() {
   const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/family').then((res) => {
-      return setWishList(res.data.data.family);
+    getFamilyWishlist('Zs3xufcbxHX6TSolLc2g').then((results) => {
+      if (results.length) {
+        setWishList(results);
+      }
     });
   }, []);
 
@@ -30,16 +32,18 @@ function FamilyWishList() {
   );
 
   const getRows = (wishList) =>
+    wishList &&
     wishList.map((item, index) => <WishListRow item={item} key={index} />);
 
   const getFamilyMembers = () =>
+    wishList &&
     wishList.map((member) => (
       <li key={member.id}>
         <Table
           className="FamilyWishList__member"
           header={getTableHeader(member.name)}
           isordered={false}
-          rows={getRows(member.Presents)}
+          rows={getRows(member.wishlist)}
         ></Table>
       </li>
     ));

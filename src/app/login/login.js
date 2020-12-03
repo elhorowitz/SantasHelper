@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Redirect, useHistory, useLocation } from 'react-router-dom';
 
 import Button from '../components/button/button';
 import BackgroundVideo from '../components/backgroundVideo/backgroundVideo';
@@ -11,15 +11,14 @@ import backgroundPoster from '../../assets/snowy_background_poster.png';
 import './login.css';
 
 function Login(props) {
-  const history = useHistory();
   const location = useLocation();
 
-  const { from } = location.state || { from: { pathname: '/family' } };
-  const login = () => {
-    props.authentication.authenticate(() => {
-      history.replace(from);
-    });
-  };
+  if (props.authentication.isAuthenticated) {
+    const { from } = location.state || { from: { pathname: '/family' } };
+    return <Redirect to={from.pathname} />;
+  }
+
+  const login = () => props.authentication.authenticate();
 
   return (
     <div className="Login">

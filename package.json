@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "firebase": "^8.1.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "react": "^16.13.1",
@@ -49,6 +50,5 @@
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "2.0.5"
-  },
-  "proxy": "http://localhost:3333"
+  }
 }

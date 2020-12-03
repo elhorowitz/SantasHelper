@@ -4,6 +4,7 @@ import axios from 'axios';
 import BasePage from '../components/basePage/basePage';
 import Table from '../components/table/table';
 import WishListRow from '../components/wishList/wishListRow/wishListRow';
+import { getPersonalWishlist } from '../services/backend';
 
 import './personalWishList.css';
 
@@ -12,8 +13,10 @@ function PersonalWishList() {
   const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/family').then((res) => {
-      return setWishList(res.data.data.wishlist);
+    getPersonalWishlist().then((results) => {
+      if (results.length) {
+        setWishList(results);
+      }
     });
   }, []);
 
