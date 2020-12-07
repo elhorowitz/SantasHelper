@@ -2,9 +2,13 @@ import React from 'react';
 
 import './button.css';
 
-function Button({ children, ...restProps }) {
+function Button({ children, theme, ...restProps }) {
+  const { className } = restProps;
+  const classes = ['Button', `Button--${theme ? theme : 'primary'}`, className]
+    .filter((item) => !!item)
+    .join(' ');
   return (
-    <button className="Button" {...restProps}>
+    <button {...restProps} className={classes}>
       {children}
     </button>
   );

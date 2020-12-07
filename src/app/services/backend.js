@@ -95,6 +95,22 @@ export const getPersonalWishlist = () => {
   }
 };
 
+export const saveToPersonalWishlist = (present) => {
+  const currentUser = firebase.auth().currentUser;
+  if (currentUser) {
+    return getUserRef(currentUser).then((userRef) => {
+      const personRef = database.collection('people').doc(userRef.id);
+
+      return personRef.get().then((results) => {
+        const { wishlist } = results.data();
+        return personRef.update({
+          wishlist: wishlist.concat(present),
+        });
+      });
+    });
+  }
+};
+
 export const getFamilyWishlist = (familyId) => {
   const currentUser = firebase.auth().currentUser;
   if (currentUser) {

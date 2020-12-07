@@ -9,7 +9,7 @@ import './table.css';
 function Table({ isordered, header, rows, footer, ...restProps }) {
   if (isordered) {
     return (
-      <ol className="Table" {...restProps}>
+      <ol {...restProps} className="Table">
         {header && <TableHeader>{header}</TableHeader>}
         {rows &&
           rows.map((row, index) => <TableRow key={index}>{row}</TableRow>)}
@@ -18,7 +18,7 @@ function Table({ isordered, header, rows, footer, ...restProps }) {
     );
   } else {
     return (
-      <ul className="Table" {...restProps}>
+      <ul {...restProps} className="Table">
         {header && <TableHeader>{header}</TableHeader>}
         {rows &&
           rows.map((row, index) => <TableRow key={index}>{row}</TableRow>)}
