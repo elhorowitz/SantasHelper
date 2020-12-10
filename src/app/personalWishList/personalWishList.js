@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import BasePage from '../components/basePage/basePage';
 import Button from '../components/button/button';
@@ -7,9 +6,12 @@ import InputField from '../components/inputField/inputField';
 import Table from '../components/table/table';
 import TextArea from '../components/textArea/textArea';
 import WishListRow from '../components/wishList/wishListRow/wishListRow';
+import useForm from '../hooks/useForm';
 import {
   getPersonalWishlist,
+  removeFromPersonalWishlist,
   saveToPersonalWishlist,
+  updatePersonalWishlist,
 } from '../services/backend';
 
 import './personalWishList.css';
@@ -18,7 +20,6 @@ function PersonalWishList() {
   // Prepare states
   const [wishList, setWishList] = useState([]);
   const [showForm, setShowForm] = useState(false);
-  const [newPresent, setNewPresent] = useState({});
 
   useEffect(() => {
     getPersonalWishlist().then((results) => {
@@ -26,19 +27,25 @@ function PersonalWishList() {
         setWishList(results);
       }
     });
-    setNewPresent({ name: '', link: '', notes: '' });
-  }, []);
+  });
 
-  const rows = wishList.map((item) => <WishListRow item={item} />);
+  const updatePresent = (item) => updatePersonalWishlist(item);
+
+  const removePresent = (item) => removeFromPersonalWishlist(item);
+
+  const rows = wishList.map((item, index) => (
+    <WishListRow
+      handleEdit={updatePresent}
+      handleDelete={removePresent}
+      item={item}
+      key={index}
+    />
+  ));
 
   const toggleForm = () => setShowForm(!showForm);
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setNewPresent({ ...newPresent, [name]: value });
-  };
-  const saveNewPresent = (event) => {
-    event.preventDefault();
-    saveToPersonalWishlist(newPresent)
+
+  const saveNewPresent = () => {
+    saveToPersonalWishlist(inputs)
       .then(() => {
         toggleForm();
       })
@@ -46,37 +53,40 @@ function PersonalWishList() {
         console.log(error);
       });
   };
-
+  const { inputs, handleInputChange, handleSubmit } = useForm({
+    initialInputs: { name: '', link: '', notes: '' },
+    onSubmit: saveNewPresent,
+  });
   return (
     <BasePage description="For Christmas, may I please have:">
       {showForm ? (
-        <form>
+        <form onSubmit={handleSubmit}>
           <InputField
             id="name"
             label="Name"
-            onChange={handleChange}
-            value={newPresent.name}
+            onChange={handleInputChange}
+            value={inputs.name}
           />
           <InputField
             id="link"
             isOptional
             label="Link"
-            onChange={handleChange}
-            value={newPresent.link}
+            onChange={handleInputChange}
+            value={inputs.link}
           />
           <TextArea
             id="notes"
             isOptional
             label="Notes"
-            onChange={handleChange}
-            value={newPresent.notes}
+            onChange={handleInputChange}
+            value={inputs.notes}
           />
 
           <div className="PersonalWishList__actions">
             <Button onClick={toggleForm} theme="secondary" type="button">
               Cancel
             </Button>
-            <Button onClick={saveNewPresent}>Save</Button>
+            <Button type="submit">Save</Button>
           </div>
         </form>
       ) : (

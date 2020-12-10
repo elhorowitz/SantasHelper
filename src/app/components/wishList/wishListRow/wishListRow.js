@@ -1,53 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaCaretDown, FaCaretUp, FaEdit } from 'react-icons/fa';
+
+import Button from '../../button/button';
+import InputField from '../../inputField/inputField';
+import TextArea from '../../textArea/textArea';
+import useForm from '../../../hooks/useForm';
 
 import './wishListRow.css';
 
-class WishListRow extends React.Component {
-  constructor(props) {
-    super(props);
+function WishListRow({ handleDelete, handleEdit, item }) {
+  const [canEdit, setCanEdit] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-    this.state = {
-      isExpanded: false,
-      item: props.item,
-    };
-    this.toggleExpand = this.toggleExpand.bind(this);
-  }
+  useEffect(() => {
+    setCanEdit(!!handleEdit);
+  }, [handleEdit]);
 
-  toggleExpand() {
-    console.log('clicked! ', this.state.isExpanded);
-    this.setState((state) => ({ isExpanded: !state.isExpanded }));
-  }
+  const toggleEdit = () => {
+    setIsEditing(!isEditing);
+    setIsExpanded(false);
+  };
 
-  render() {
-    const { isExpanded, item } = this.state;
+  const toggleExpand = () => {
+    if (!isEditing) {
+      setIsExpanded(!isExpanded);
+    }
+  };
 
-    return (
-      <div className="WishListRow">
-        <button
-          className={
-            'WishListRow__toggle' +
-            (isExpanded ? ' WishListRow__toggle--expanded' : '')
-          }
-          onClick={this.toggleExpand}
-        >
-          <p className="WishListRow__toggle__label">{item.name}</p>
+  const handleRemove = () => {
+    if (
+      window.confirm(
+        `Are you sure you want to remove ${item.name} from your wishlist?`
+      )
+    ) {
+      handleDelete();
+    }
+  };
+
+  const { inputs, handleInputChange, handleSubmit } = useForm({
+    initialInputs: { link: item.link, notes: item.notes },
+    onSubmit: handleEdit,
+  });
+
+  return (
+    <div className="WishListRow__container">
+      <div
+        className={`WishListRow${isExpanded ? ' WishListRow--expanded' : ''}`}
+      >
+        <button className={'WishListRow__toggle'} onClick={toggleExpand}>
+          <p className="WishListRow__toggle__label">
+            {item.name}
+            {isExpanded ? <FaCaretUp /> : <FaCaretDown />}
+          </p>
         </button>
-
-        {isExpanded && (
-          <div className="WishListRow__expand">
-            <div className="WishListRow__expand__notes">
-              <p>Notes:</p>
-              <p>{item.notes || '--'}</p>
-            </div>
-            <div className="WishListRow__expand__links">
-              <p>Links:</p>
-              {(item.link && <a href={item.link}>{item.link}</a>) || '--'}
-            </div>
-          </div>
+        {canEdit && (
+          <button className="WishListRow__toggle__action" onClick={toggleEdit}>
+            <FaEdit />
+            <span>Edit</span>
+          </button>
         )}
       </div>
-    );
-  }
+
+      {isExpanded && (
+        <div className="WishListRow__expand">
+          <div className="WishListRow__expand__notes">
+            <p>Notes:</p>
+            <p>{item.notes || '--'}</p>
+          </div>
+          <div className="WishListRow__expand__links">
+            <p>Links:</p>
+            {(item.link && <a href={item.link}>{item.link}</a>) || '--'}
+          </div>
+        </div>
+      )}
+
+      {isEditing && (
+        <form className="WishListRow__expand" onSubmit={handleSubmit}>
+          <InputField
+            id="link"
+            isOptional
+            label="Link"
+            onChange={handleInputChange}
+            value={inputs.link}
+          />
+          <TextArea
+            id="notes"
+            isOptional
+            label="Notes"
+            onChange={handleInputChange}
+            value={inputs.notes}
+          />
+          <div className="WishListRow__expand__actions">
+            <Button onClick={handleRemove} theme="secondary" type="button">
+              Delete
+            </Button>
+            <Button type="submit">Save</Button>
+          </div>
+        </form>
+      )}
+    </div>
+  );
 }
 
 export default WishListRow;

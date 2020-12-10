@@ -1,28 +1,50 @@
-.WishListRow {
+.WishListRow__container {
   border-bottom: 1px solid var(--black-25);
+}
+
+.WishListRow {
+  display: flex;
 }
 
 .WishListRow__toggle {
   background: none;
   border: none;
   border-radius: 0;
-  display: block;
+  flex: 1;
   font-family: 'Lato';
   font-size: 16px;
   padding: 12px 0;
   text-align: left;
-  width: 100%;
 }
 
+.WishListRow--expanded,
 .WishListRow__toggle:hover,
-.WishListRow__toggle:focus,
-.WishListRow__toggle--expanded {
+.WishListRow__toggle:focus {
   color: var(--red-100);
   font-weight: 700;
   outline: none;
 }
 
 .WishListRow__toggle__label {
+  display: flex;
+  align-items: flex-end;
+}
+
+.WishListRow__toggle__action {
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding: 12px;
+}
+
+.WishListRow__toggle__action span {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .WishListRow__expand {
@@ -32,5 +54,11 @@
 
 .WishListRow__expand__notes,
 .WishListRow__expand__links {
+  margin-bottom: 24px;
+}
+
+.WishListRow__expand__actions {
+  display: flex;
+  justify-content: space-around;
   margin-bottom: 24px;
 }

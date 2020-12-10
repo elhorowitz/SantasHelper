@@ -95,6 +95,22 @@ export const getPersonalWishlist = () => {
   }
 };
 
+export const removeFromPersonalWishlist = (present) => {
+  const currentUser = firebase.auth().currentUser;
+  if (currentUser) {
+    return getUserRef(currentUser).then((userRef) => {
+      const personRef = database.collection('people').doc(userRef.id);
+
+      return personRef.get().then((results) => {
+        const { wishlist } = results.data();
+        return personRef.update({
+          wishlist: wishlist.filter((item) => item.name !== present.name),
+        });
+      });
+    });
+  }
+};
+
 export const saveToPersonalWishlist = (present) => {
   const currentUser = firebase.auth().currentUser;
   if (currentUser) {
@@ -105,6 +121,28 @@ export const saveToPersonalWishlist = (present) => {
         const { wishlist } = results.data();
         return personRef.update({
           wishlist: wishlist.concat(present),
+        });
+      });
+    });
+  }
+};
+
+export const updatePersonalWishlist = (present) => {
+  const currentUser = firebase.auth().currentUser;
+  if (currentUser) {
+    return getUserRef(currentUser).then((userRef) => {
+      const personRef = database.collection('people').doc(userRef.id);
+
+      return personRef.get().then((results) => {
+        const { wishlist } = results.data();
+        return personRef.update({
+          wishlist: wishlist.map((item) => {
+            if (item.name === present.name) {
+              return present;
+            } else {
+              return item;
+            }
+          }),
         });
       });
     });
