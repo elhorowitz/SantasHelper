@@ -6,34 +6,62 @@ import { ReactComponent as FullSleighIcon } from '../../assets/icons/sleigh-full
 import BasePage from '../components/basePage/basePage';
 import Table from '../components/table/table';
 import WishListRow from '../components/wishList/wishListRow/wishListRow';
-import { getFamilyWishlist } from '../services/backend';
+import {
+  buyWishlistItem,
+  getFamily,
+  getFamilyWishlist,
+  returnWishlistItem,
+} from '../services/backend';
 
 import './familyWishList.css';
 
 function FamilyWishList() {
-  // Prepare states
   const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
-    getFamilyWishlist('Zs3xufcbxHX6TSolLc2g').then((results) => {
-      if (results.length) {
-        setWishList(results);
-      }
-    });
+    getFamily()
+      .then((familyId) => getFamilyWishlist(familyId))
+      .then((results) => {
+        if (results.length) {
+          setWishList(results);
+        }
+      });
   }, []);
 
-  const getTableHeader = (memberName) => (
+  const getTableHeader = (memberName, memberTally) => (
     <div className="FamilyWishListHeader">
       <p className="FamilyWishListHeader__label">{memberName}'s Wishlist</p>
-      <p className="FamilyWishListHeader__metadata">
-        0 <EmptySleighIcon className="FamilyWishListHeader__metadata__icon" />
+      <p
+        className={`FamilyWishListHeader__metadata${
+          memberTally <= 0 && ' FamilyWishListHeader__metadata--empty'
+        }`}
+      >
+        {memberTally}{' '}
+        {memberTally > 0 ? (
+          <FullSleighIcon className="FamilyWishListHeader__metadata__icon" />
+        ) : (
+          <EmptySleighIcon className="FamilyWishListHeader__metadata__icon" />
+        )}
       </p>
     </div>
   );
 
-  const getRows = (wishList) =>
+  const buyPresent = (memberId, itemName) =>
+    buyWishlistItem(memberId, itemName);
+
+  const returnPresent = (memberId, itemName) =>
+    returnWishlistItem(memberId, itemName);
+
+  const getRows = (id, wishList) =>
     wishList &&
-    wishList.map((item, index) => <WishListRow item={item} key={index} />);
+    wishList.map((item, index) => (
+      <WishListRow
+        handleSelect={() => buyPresent(id, item.name)}
+        handleUnselect={() => returnPresent(id, item.name)}
+        item={item}
+        key={index}
+      />
+    ));
 
   const getFamilyMembers = () =>
     wishList &&
@@ -41,9 +69,9 @@ function FamilyWishList() {
       <li key={member.id}>
         <Table
           className="FamilyWishList__member"
-          header={getTableHeader(member.name)}
+          header={getTableHeader(member.name, member.itemsBought)}
           isordered={false}
-          rows={getRows(member.wishlist)}
+          rows={getRows(member.id, member.wishlist)}
         ></Table>
       </li>
     ));

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 
 import Button from '../components/button/button';
 import BackgroundVideo from '../components/backgroundVideo/backgroundVideo';

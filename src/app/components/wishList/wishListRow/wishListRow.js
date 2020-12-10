@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaCaretDown, FaCaretUp, FaEdit } from 'react-icons/fa';
 
+import { ReactComponent as BuyIcon } from '../../../../assets/icons/gift.svg';
+
 import Button from '../../button/button';
 import InputField from '../../inputField/inputField';
 import TextArea from '../../textArea/textArea';
@@ -8,14 +10,22 @@ import useForm from '../../../hooks/useForm';
 
 import './wishListRow.css';
 
-function WishListRow({ handleDelete, handleEdit, item }) {
+function WishListRow({
+  handleDelete,
+  handleEdit,
+  handleSelect,
+  handleUnselect,
+  item,
+}) {
+  const [canBuy, setCanBuy] = useState(false);
   const [canEdit, setCanEdit] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     setCanEdit(!!handleEdit);
-  }, [handleEdit]);
+    setCanBuy(!!handleSelect);
+  }, [handleEdit, handleSelect]);
 
   const toggleEdit = () => {
     setIsEditing(!isEditing);
@@ -53,7 +63,14 @@ function WishListRow({ handleDelete, handleEdit, item }) {
             {item.name}
             {isExpanded ? <FaCaretUp /> : <FaCaretDown />}
           </p>
+          {item.isBought && (
+            <p className="WishListRow__metadata">
+              Purchased{item.isBoughtByMe && ' by me'}
+              <BuyIcon className="WishListRow__metadata__icon" />
+            </p>
+          )}
         </button>
+
         {canEdit && (
           <button className="WishListRow__toggle__action" onClick={toggleEdit}>
             <FaEdit />
@@ -72,6 +89,15 @@ function WishListRow({ handleDelete, handleEdit, item }) {
             <p>Links:</p>
             {(item.link && <a href={item.link}>{item.link}</a>) || '--'}
           </div>
+          {canBuy && (
+            <div className="WishListRow__expand__actions">
+              {item.isBoughtByMe ? (
+                <Button onClick={handleUnselect}>Return</Button>
+              ) : (
+                <Button onClick={handleSelect}>Buy</Button>
+              )}
+            </div>
+          )}
         </div>
       )}
 

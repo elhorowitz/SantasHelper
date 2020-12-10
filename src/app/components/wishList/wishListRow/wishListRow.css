@@ -3,16 +3,19 @@
 }
 
 .WishListRow {
+  align-items: center;
   display: flex;
 }
 
 .WishListRow__toggle {
   background: none;
-  border: none;
   border-radius: 0;
+  border: none;
+  display: flex;
   flex: 1;
   font-family: 'Lato';
   font-size: 16px;
+  justify-content: space-between;
   padding: 12px 0;
   text-align: left;
 }
@@ -45,6 +48,19 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.WishListRow__metadata {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.WishListRow__metadata__icon {
+  height: 24px;
+  width: 24px;
+  margin-left: 8px;
 }
 
 .WishListRow__expand {

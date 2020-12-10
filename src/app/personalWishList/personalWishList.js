@@ -17,7 +17,6 @@ import {
 import './personalWishList.css';
 
 function PersonalWishList() {
-  // Prepare states
   const [wishList, setWishList] = useState([]);
   const [showForm, setShowForm] = useState(false);
 
@@ -27,7 +26,7 @@ function PersonalWishList() {
         setWishList(results);
       }
     });
-  });
+  }, []);
 
   const updatePresent = (item) => updatePersonalWishlist(item);
 

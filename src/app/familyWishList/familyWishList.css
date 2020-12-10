@@ -9,6 +9,10 @@
   align-items: baseline;
 }
 
+.FamilyWishListHeader__metadata--empty {
+  color: var(--red-100);
+}
+
 .FamilyWishListHeader__metadata__icon {
   margin-left: 4px;
   height: 24px;
