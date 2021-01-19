@@ -19,8 +19,6 @@ function App() {
     authenticate: () => logIn(),
   };
 
-  console.log(authObject);
-
   return (
     <Router>
       <Switch>
